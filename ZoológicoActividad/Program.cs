@@ -6,7 +6,7 @@ namespace SistemaZoologico
 {
     internal class Program
     {
-        // TABLAS USANDO LISTAS BÁSICAS 
+        // TABLAS USANDO LISTAS 
 
         // 1. EMPLEADOS
         static List<string> empDui = new List<string>();
@@ -61,14 +61,14 @@ namespace SistemaZoologico
         static List<string> asignacionTarea = new List<string>();
         static List<string> asignacionFecha = new List<string>();
 
-        // MÉTODO PRINCIPAL (MENÚ BÁSICO)
+        // MÉTODO PRINCIPAL 
         static void Main(string[] args)
         {
             int opcion = 0;
             do
             {
                 Console.Clear();
-                Console.WriteLine("    SISTEMA DE ADMINISTRATIVO DE ZOOLÓGICO");
+                Console.WriteLine("    SISTEMA ADMINISTRATIVO DE ZOOLÓGICO");
                 Console.WriteLine("==================================================");
                 Console.WriteLine("1. Personal y Pagos");
                 Console.WriteLine("2. Comprar Boleto de Entrada");
@@ -342,7 +342,7 @@ namespace SistemaZoologico
             boletoDuiEmpleado.Add(duiEmp);
 
             Console.WriteLine("\n========================================");
-            Console.WriteLine("¡BOLETO GENERADO CON ÉXITO!");
+            Console.WriteLine("¡BOLETO GENERADO CON ÉXITO");
             Console.WriteLine($"Cliente: {nombreCli} | Tipo: {tipoBoletoText} | Precio: ${precio:F2}");
             Console.WriteLine($"Fecha: {fechaHoy} | Atendió DUI: {duiEmp}");
         }
@@ -547,7 +547,7 @@ namespace SistemaZoologico
         static void EliminarAnimal()
         {
             Console.WriteLine("\n--- ELIMINAR ANIMAL ---");
-            int id = LeerEnteroPositivo("Ingrese ID del animal a dar de baja: ");
+            int id = LeerEnteroPositivo("Ingrese ID del animal para borralo: ");
             int pos = BuscarPosicionAnimal(id);
 
             if (pos == -1)
@@ -564,7 +564,7 @@ namespace SistemaZoologico
             animalOrigen.RemoveAt(pos);
             animalIdHabitat.RemoveAt(pos);
 
-            Console.WriteLine("¡Animal dado de baja del sistema!");
+            Console.WriteLine("¡Animal eliminado del sistema!");
         }
 
         static void BuscarAnimalesPorHabitat()
@@ -598,7 +598,7 @@ namespace SistemaZoologico
                 Console.WriteLine("2. Consultar Dieta de un Animal");
                 Console.WriteLine("3. Registrar / Actualizar Ficha Médica de Salud");
                 Console.WriteLine("4. Consultar Historial Médico");
-                Console.WriteLine("5. Asignar Tarea de Cuidado (Empleado <-> Animal)");
+                Console.WriteLine("5. Asignar Tarea de Cuidado (Empleado y Animal)");
                 Console.WriteLine("6. Consultar Tareas Asignadas");
                 Console.WriteLine("7. Volver al Menú Principal");
 
@@ -748,7 +748,7 @@ namespace SistemaZoologico
             asignacionTarea.Add(tareaText);
             asignacionFecha.Add(fecha);
 
-            Console.WriteLine("\n¡Tarea de cuidado asignada exitosamente!");
+            Console.WriteLine("\n¡Tarea asignada exitosamente!");
         }
 
         static void ConsultarTareas()
@@ -950,7 +950,7 @@ namespace SistemaZoologico
             do
             {
                 Console.Write(mensaje);
-                string entrada = Console.ReadLine();
+                string entrada = Console.ReadLine()!;
                 if (int.TryParse(entrada, out numero) && numero > 0)
                 {
                     return numero;
@@ -966,7 +966,7 @@ namespace SistemaZoologico
             do
             {
                 Console.Write(mensaje);
-                string entrada = Console.ReadLine();
+                string entrada = Console.ReadLine()!;
                 if (double.TryParse(entrada, out numero) && numero >= 0)
                 {
                     return numero;
