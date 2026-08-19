@@ -6,9 +6,7 @@ namespace SistemaZoologico
 {
     internal class Program
     {
-        // =========================================================================
-        // "TABLAS" SIMULADAS USANDO LISTAS BÁSICAS (SIN USAR CLASES PERSONALIZADAS)
-        // =========================================================================
+        // TABLAS USANDO LISTAS BÁSICAS 
 
         // 1. EMPLEADOS
         static List<string> empDui = new List<string>();
@@ -63,22 +61,19 @@ namespace SistemaZoologico
         static List<string> asignacionTarea = new List<string>();
         static List<string> asignacionFecha = new List<string>();
 
-        // =========================================================================
         // MÉTODO PRINCIPAL (MENÚ BÁSICO)
-        // =========================================================================
         static void Main(string[] args)
         {
             int opcion = 0;
             do
             {
                 Console.Clear();
+                Console.WriteLine("    SISTEMA DE ADMINISTRATIVO DE ZOOLÓGICO");
                 Console.WriteLine("==================================================");
-                Console.WriteLine("    SISTEMA DE GESTIÓN DEL ZOOLÓGICO");
-                Console.WriteLine("==================================================");
-                Console.WriteLine("1. Módulo de Personal y Pagos");
-                Console.WriteLine("2. Módulo de Comprar Boleto de Entrada");
-                Console.WriteLine("3. Módulo de Animales y Hábitats");
-                Console.WriteLine("4. Módulo de Salud, Alimentación y Asignación");
+                Console.WriteLine("1. Personal y Pagos");
+                Console.WriteLine("2. Comprar Boleto de Entrada");
+                Console.WriteLine("3. Animales y Hábitats");
+                Console.WriteLine("4. Salud, Alimentación y Asignación");
                 Console.WriteLine("5. Salir del Sistema");
                 Console.WriteLine("==================================================");
 
@@ -96,9 +91,7 @@ namespace SistemaZoologico
             } while (opcion != 5);
         }
 
-        // =========================================================================
         // SECCIÓN 1: PERSONAL Y PAGOS
-        // =========================================================================
         static void MenuPersonalYPagos()
         {
             int subOpcion = 0;
@@ -295,9 +288,7 @@ namespace SistemaZoologico
             Console.WriteLine("========================================");
         }
 
-        // =========================================================================
         // SECCIÓN 2: COMPRAR BOLETO DE ENTRADA
-        // =========================================================================
         static void MenuBoletos()
         {
             int subOpcion = 0;
@@ -354,7 +345,6 @@ namespace SistemaZoologico
             Console.WriteLine("¡BOLETO GENERADO CON ÉXITO!");
             Console.WriteLine($"Cliente: {nombreCli} | Tipo: {tipoBoletoText} | Precio: ${precio:F2}");
             Console.WriteLine($"Fecha: {fechaHoy} | Atendió DUI: {duiEmp}");
-            Console.WriteLine("========================================");
         }
 
         static void ConsultarBoletos()
@@ -362,7 +352,7 @@ namespace SistemaZoologico
             Console.WriteLine("\n--- HISTORIAL DE BOLETOS VENDIDOS ---");
             if (clienteNombre.Count == 0)
             {
-                Console.WriteLine("No se han vendido boletos aún.");
+                Console.WriteLine("Aún no se han vendido boletos.");
                 return;
             }
 
@@ -374,12 +364,10 @@ namespace SistemaZoologico
             }
 
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine($"INGRESOS TOTALES RECAUDADOS: ${totalIngresos:F2}");
+            Console.WriteLine($"INGRESOS TOTALES: ${totalIngresos:F2}");
         }
 
-        // =========================================================================
         // SECCIÓN 3: ANIMALES Y HÁBITATS
-        // =========================================================================
         static void MenuAnimalesYHabitats()
         {
             int subOpcion = 0;
@@ -598,9 +586,7 @@ namespace SistemaZoologico
             if (!encontro) Console.WriteLine("No hay animales registrados en este recinto.");
         }
 
-        // =========================================================================
         // SECCIÓN 4: SALUD, ALIMENTACIÓN Y ASIGNACIÓN DE CUIDADO
-        // =========================================================================
         static void MenuSaludYAlimentacion()
         {
             int subOpcion = 0;
@@ -795,9 +781,7 @@ namespace SistemaZoologico
             }
         }
 
-        // =========================================================================
         // MÉTODOS DE BÚSQUEDA AUXILIARES EN LISTAS
-        // =========================================================================
         static int BuscarPosicionEmpleado(string dui)
         {
             for (int i = 0; i < empDui.Count; i++)
@@ -825,9 +809,7 @@ namespace SistemaZoologico
             return -1;
         }
 
-        // =========================================================================
-        // FUNCIONES DE VALIDACIÓN DE ENTRADAS (ESTRICTAS Y REUTILIZABLES)
-        // =========================================================================
+        // FUNCIONES DE VALIDACIÓN DE ENTRADAS 
 
         // Valida que el texto no contenga números ni símbolos (Solo letras y espacios)
         static string LeerTextoSoloLetras(string mensaje)
@@ -865,7 +847,7 @@ namespace SistemaZoologico
             return entrada;
         }
 
-        // Valida que solo sean números (ej. para teléfonos sin guiones)
+        // Valida que solo sean números (para teléfonos sin guiones)
         static string LeerTextoNumerico(string mensaje)
         {
             string entrada;
@@ -901,7 +883,7 @@ namespace SistemaZoologico
             return entrada;
         }
 
-        // Valida que el texto no esté vacío (para cualquier cadena general)
+        // Valida que el texto no esté vacío (para cualquier campo)
         static string LeerTextoNoVacio(string mensaje)
         {
             string entrada;
